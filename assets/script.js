@@ -85,3 +85,6 @@ boutonFiltrerHotels.addEventListener("click", function () {
 
     console.log("hotels")
 })
+
+let token = window.localStorage.getItem("token")
+console.log(token)

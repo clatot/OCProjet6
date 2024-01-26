@@ -6,8 +6,6 @@ form.addEventListener("submit", function (event) {
 
     const mail = document.getElementById("email").value
     const password = document.getElementById("password").value
-    console.log(mail)
-    console.log(password)
 
     const user = {
         email: document.getElementById("email").value,
@@ -16,13 +14,19 @@ form.addEventListener("submit", function (event) {
     const chargeUtile = JSON.stringify(user)
     console.log(chargeUtile)
 
-    fetch("http://localhost:5678/api/users/login", {
+    const reponse = fetch("http://localhost:5678/api/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: chargeUtile
-    }) 
-
-    console.log(localStorage.token)
-
-    // window.location.href = "./index.html"
+    }).then(reponse => reponse.json())
+    .then ((response) => {
+        if (!response.token) {
+            alert("Identifiant ou mot de   passe incorrect");
+            return;
+        }
+        const token = JSON.stringify(response.token);
+        console.log(token)
+        window.localStorage.setItem("token", token);
+        window.location = "./index.html";
+    })
 })
