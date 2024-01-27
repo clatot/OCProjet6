@@ -24,9 +24,9 @@ form.addEventListener("submit", function (event) {
             alert("Identifiant ou mot de   passe incorrect");
             return;
         }
-        const token = JSON.stringify(response.token);
+        const token = JSON.stringify(response.token)
         console.log(token)
-        window.localStorage.setItem("token", token);
-        window.location = "./index.html";
+        window.localStorage.setItem("token", token)
+        window.location = "./index.html"
     })
 })

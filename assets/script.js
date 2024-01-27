@@ -86,5 +86,22 @@ boutonFiltrerHotels.addEventListener("click", function () {
     console.log("hotels")
 })
 
+
+const login = document.querySelector("#login")
+
 let token = window.localStorage.getItem("token")
-console.log(token)
+if (!token) {
+    console.log("Aucun utilisateur connecté.")
+
+    login.addEventListener("click", function ()  {
+        window.location = "./login.html"
+    })
+} else {
+    console.log("Utilisateur Connecté")
+    login.textContent = "logout"
+    
+    login.addEventListener("click", function ()  {
+    window.localStorage.removeItem("token")
+    })
+}
+
