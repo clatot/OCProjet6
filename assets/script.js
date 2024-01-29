@@ -89,6 +89,7 @@ boutonFiltrerHotels.addEventListener("click", function () {
 
 const login = document.querySelector("#login")
 const title = document.querySelector("#portfolio-title")
+const filter = document.querySelector(".filter")
 const titlemodif = document.querySelector("#portfolio-modifier")
 console.log(title)
 
@@ -96,7 +97,9 @@ let token = window.localStorage.getItem("token")
 if (!token) {
     console.log("Aucun utilisateur connecté.")
     title.classList.remove("none")
+    filter.classList.remove("none")
     titlemodif.classList.add("none")
+    console.log(titlemodif)
 
     login.addEventListener("click", function ()  {
         window.location = "./login.html"
@@ -105,6 +108,7 @@ if (!token) {
     console.log("Utilisateur Connecté")
     login.textContent = "logout"
     title.classList.add("none")
+    filter.classList.add("none")
     titlemodif.classList.remove("none") 
     
     login.addEventListener("click", function ()  {

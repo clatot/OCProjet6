@@ -58,9 +58,7 @@ body {
 	font-size: 14px;
 }
 header {
-	display: flex;
-	justify-content: space-between;
-	margin: 50px 0
+
 }
 section {
 	margin: 50px 0
@@ -102,6 +100,25 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0
+}
+.header-modif {
+	display: flex;
+	justify-content: center;
+	padding: 20px 0px;
+	width: auto;
+	background-color: black;
+	color: white;
+}
+.header-modif img {
+	height: 16px;
+	width: 16px;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
