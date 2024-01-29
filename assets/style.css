@@ -130,6 +130,29 @@ li:hover {
 	margin-bottom: 1em;
 }
 
+#portfolio .title {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	left: 50px;
+	gap: 20px;
+}
+#portfolio .modifier {
+	display: flex;
+	position: relative;
+	top: 12px;
+	gap: 8px;
+}
+#portfolio .none {
+	display: none;
+}
+#portfolio .modifier img {
+	height: 16px;
+	width: 16px;
+	position: relative;
+	bottom: 3px;
+}
+
 .filter {
 	display: flex;
 	justify-content: center;
