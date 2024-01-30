@@ -91,6 +91,7 @@ const login = document.querySelector("#login")
 const title = document.querySelector("#portfolio-title")
 const filter = document.querySelector(".filter")
 const titlemodif = document.querySelector("#portfolio-modifier")
+const headermodif = document.querySelector(".header-modif")
 console.log(title)
 
 let token = window.localStorage.getItem("token")
@@ -98,6 +99,7 @@ if (!token) {
     console.log("Aucun utilisateur connecté.")
     title.classList.remove("none")
     filter.classList.remove("none")
+    headermodif.classList.add("none")
     titlemodif.classList.add("none")
     console.log(titlemodif)
 
@@ -109,6 +111,7 @@ if (!token) {
     login.textContent = "logout"
     title.classList.add("none")
     filter.classList.add("none")
+    headermodif.classList.remove("none")
     titlemodif.classList.remove("none") 
     
     login.addEventListener("click", function ()  {
