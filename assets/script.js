@@ -109,10 +109,11 @@ if (!token) {
 } else {
     console.log("Utilisateur Connecté")
     login.textContent = "logout"
-    title.classList.add("none")
-    filter.classList.add("none")
     headermodif.classList.remove("none")
     titlemodif.classList.remove("none") 
+    title.classList.add("none")
+    filter.classList.add("none")
+    
     
     login.addEventListener("click", function ()  {
         login.textContent = "login"
