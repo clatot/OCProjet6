@@ -117,3 +117,36 @@ if (!token) {
     })
 }
 
+let modal = null;
+
+const modalOpen = function (e) {
+    e.preventDefault();
+    modal = document.querySelector(e.target.getAttribute("href"));
+    modal.style.display = null;
+    modal.removeAttribute("aria-hidden");
+    modal.setAttribute("aria-modal","true");
+    modal.addEventListener("click", modalClose);
+    modal.querySelector(".modal-close").addEventListener("click", modalClose);
+    modal.querySelector(".modal-stop").addEventListener("click", stopPropagation);
+}
+
+const modalClose = function (e) {
+    if (modal === null) return
+    e.preventDefault();
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
+    modal.removeAttribute("aria-modal");
+    modal.removeEventListener("click", modalClose);
+    modal.querySelector(".modal-close").removeEventListener("click", modalClose);
+    modal.querySelector(".modal-stop").removeEventListener("click", stopPropagation);
+    modal = null;
+}
+
+const stopPropagation = function (e) {
+    e.stopPropagation();
+}
+
+const modalLien = document.querySelectorAll(".modal-link").forEach(a => {
+    a.addEventListener("click", modalOpen)
+})    
+    
