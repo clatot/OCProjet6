@@ -280,13 +280,25 @@ input[type="submit"]{
 }
 
 .modal .works {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: flex-start;
+	margin: 50px;
+	gap: 10px;
 }
 
 .modal .works img {
 	height: 100px;
 	width: 75px;
+}
+
+.modal .works .trash {
+	height: 17px;
+	width: 17px;
+	position: relative;
+	bottom: 75px;
+	right: 25px;
 }
 
 footer nav ul {

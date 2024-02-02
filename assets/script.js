@@ -153,7 +153,7 @@ function modalContentGallery() {
             <button class="modal-close">Fermer</button>
             <h2 id="titlemodal1">Galerie photo</h2>
             <div class="works">
-            <div>
+            </div>
         </div>
         `
     let worksDiv = document.querySelector(".works")
@@ -162,7 +162,8 @@ function modalContentGallery() {
         worksDiv.innerHTML += `
             <figure>
                 <img src="${works[i].imageUrl}"></img>
-            <figure>
+                <img class="trash" src="./assets/icons/trash-can-solid.svg"></img>
+            </figure>
         `
     }
 }
