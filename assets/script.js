@@ -131,13 +131,13 @@ const modalOpen = function (e) {
 
 const modalClose = function (e) {
     if (modal === null) return
-    modal.innerHTML = ""
     modal.style.display = "none";
     modal.setAttribute("aria-hidden", "true");
     modal.removeAttribute("aria-modal");
     modal.removeEventListener("click", modalClose);
     modal.querySelector(".modal-close").removeEventListener("click", modalClose);
     modal.querySelector(".modal-stop").removeEventListener("click", stopPropagation);
+    modal.innerHTML = ""
     modal = null;
     console.log(modal)
 }
@@ -150,9 +150,21 @@ function modalContentGallery() {
     modal.innerHTML= 
         `
         <div class="modal-wrapper modal-stop">
-                <button class="modal-close">Fermer</button>
+            <button class="modal-close">Fermer</button>
+            <h2 id="titlemodal1">Galerie photo</h2>
+            <div class="works">
+            <div>
         </div>
         `
+    let worksDiv = document.querySelector(".works")
+    console.log(works)
+    for (let i = 0; i < works.length; i++) {
+        worksDiv.innerHTML += `
+            <figure>
+                <img src="${works[i].imageUrl}"></img>
+            <figure>
+        `
+    }
 }
 
 function modalContentPhoto() {

@@ -216,7 +216,6 @@ header .none {
 
 .gallery img {
 	width: 100%;
-
 }
 #contact {
 	width: 50%;
@@ -278,6 +277,16 @@ input[type="submit"]{
 	width: 630px;
 	height: 688px;
 	padding: 25px;
+}
+
+.modal .works {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.modal .works img {
+	height: 100px;
+	width: 75px;
 }
 
 footer nav ul {
