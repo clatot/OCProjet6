@@ -182,7 +182,7 @@ header .none {
 	bottom: 3px;
 	pointer-events: none;
 }
-#portfolio .modifier p {
+.modifier p {
 	pointer-events: none;
 }
 
@@ -279,8 +279,6 @@ input[type="submit"]{
 	height: 688px;
 	padding: 25px;
 }
-
-
 
 footer nav ul {
 	display: flex;

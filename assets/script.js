@@ -87,7 +87,6 @@ const title = document.querySelector("#portfolio-title")
 const filter = document.querySelector(".filter")
 const titlemodif = document.querySelector("#portfolio-modifier")
 const headermodif = document.querySelector(".header-modif")
-console.log(title)
 
 let token = window.localStorage.getItem("token")
 if (!token) {
@@ -118,21 +117,21 @@ if (!token) {
 }
 
 let modal = null;
+const modalWindow = document.querySelector("#modal")
 
 const modalOpen = function (e) {
-    e.preventDefault();
-    modal = document.querySelector(e.target.getAttribute("href"));
     modal.style.display = null;
     modal.removeAttribute("aria-hidden");
     modal.setAttribute("aria-modal","true");
     modal.addEventListener("click", modalClose);
     modal.querySelector(".modal-close").addEventListener("click", modalClose);
     modal.querySelector(".modal-stop").addEventListener("click", stopPropagation);
+    console.log(modal)
 }
 
 const modalClose = function (e) {
     if (modal === null) return
-    e.preventDefault();
+    modal.innerHTML = ""
     modal.style.display = "none";
     modal.setAttribute("aria-hidden", "true");
     modal.removeAttribute("aria-modal");
@@ -140,13 +139,37 @@ const modalClose = function (e) {
     modal.querySelector(".modal-close").removeEventListener("click", modalClose);
     modal.querySelector(".modal-stop").removeEventListener("click", stopPropagation);
     modal = null;
+    console.log(modal)
 }
 
 const stopPropagation = function (e) {
     e.stopPropagation();
 }
 
-const modalLien = document.querySelectorAll(".modal-link").forEach(a => {
-    a.addEventListener("click", modalOpen)
-})    
+function modalContentGallery() {
+    modal.innerHTML= 
+        `
+        <div class="modal-wrapper modal-stop">
+                <button class="modal-close">Fermer</button>
+        </div>
+        `
+}
+
+function modalContentPhoto() {
+    `
+    <div class="modal" role="dialog" aria-modal="false" aria-labelledby="titlemodal1" style="display: none;">
+        <div class="modal-wrapper modal-stop">
+
+        </div>
+    </div>
+    `
+}
+
+const modalLink = document.querySelector(".modal-link")
+modalLink.addEventListener("click", a => {
+    a.preventDefault();
+    modal = modalWindow;
+    modalContentGallery();
+    modalOpen();
+})
     
