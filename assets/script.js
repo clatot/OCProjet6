@@ -191,7 +191,15 @@ modalLink.addEventListener("click", a => {
     modalContentGallery();
     modalOpen();
 })
+
     
 function deleteWork(id) {
-    
-}
+    const userToken = localStorage.getItem("token");
+    console.log(userToken)
+    fetch(`http://localhost:5678/api/works/${id}`, {
+        method: "delete",
+        headers: {
+            Authorization: `Bearer ${userToken}`,
+        }
+    }
+)}
