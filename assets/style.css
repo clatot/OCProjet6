@@ -296,9 +296,12 @@ input[type="submit"]{
 .modal .works .trash {
 	height: 17px;
 	width: 17px;
+	padding: 2px;
 	position: relative;
-	bottom: 75px;
-	right: 25px;
+	bottom: 78px;
+	right: 28px;
+	background-color: #000000;
+	border-radius: 3px;
 }
 
 footer nav ul {

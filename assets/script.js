@@ -157,7 +157,6 @@ function modalContentGallery() {
         </div>
         `
     let worksDiv = document.querySelector(".works")
-    console.log(works)
     for (let i = 0; i < works.length; i++) {
         worksDiv.innerHTML += `
             <figure>
@@ -165,6 +164,13 @@ function modalContentGallery() {
                 <img class="trash" src="./assets/icons/trash-can-solid.svg"></img>
             </figure>
         `
+    }
+    const trashcan = document.querySelectorAll(".trash") 
+    console.log(trashcan)
+    for (let i = 0; i < trashcan.length; i++) {
+        trashcan[i].addEventListener("click", function() {
+            deleteWork(i);
+        });
     }
 }
 
@@ -186,3 +192,6 @@ modalLink.addEventListener("click", a => {
     modalOpen();
 })
     
+function deleteWork(id) {
+    
+}
