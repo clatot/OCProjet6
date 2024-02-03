@@ -60,18 +60,37 @@
 			<!-- Récupération des travaux depuis le back-end -->
 		</div>
 		<dialog class="modal1 modal-box">
-			<div class="modal1-content">
 				<button class="modal-close-button">X</button>
 				<h2>Galerie photo</h2>
 				<div class="modal-works"></div>
 				<button class="modal-go-photo">Ajouter une photo</button>
-			</div>
 		</dialog>
-		<dialog class="modal2">
-			<div class="modal2-content">
+		<dialog class="modal2 modal-box">
 				<button class="modal-close-button">X</button>
 				<h2>Ajout photo</h2>
-			</div>
+				<form class="form" method="dialog">
+					<!-- Titre -->
+					<label for="titre">Titre :</label>
+					<input type="text" id="titre" name="titre" required>
+					
+					<!-- Upload d'Image -->
+					<label for="image">Upload d'Image :</label>
+					<input type="file" id="image" name="image" accept="image/*" required>
+					
+					<!-- Radio avec 3 numéros -->
+					<label>Choisissez un numéro :</label>
+					<input type="radio" id="numero1" name="numero" value="1" required>
+					<label for="numero1">1</label>
+					
+					<input type="radio" id="numero2" name="numero" value="2" required>
+					<label for="numero2">2</label>
+					
+					<input type="radio" id="numero3" name="numero" value="3" required>
+					<label for="numero3">3</label>
+			
+					<!-- Bouton de soumission -->
+					<input type="submit" value="Soumettre">
+				</form>
 		</dialog>
 	</section>
 	<section id="contact">
