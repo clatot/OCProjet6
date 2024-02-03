@@ -116,90 +116,157 @@ if (!token) {
     })
 }
 
-let modal = null;
-const modalWindow = document.querySelector("#modal")
+// let modal = null;
+// const modalWindow = document.querySelector("#modal")
 
-const modalOpen = function (e) {
-    modal.style.display = null;
-    modal.removeAttribute("aria-hidden");
-    modal.setAttribute("aria-modal","true");
-    modal.addEventListener("click", modalClose);
-    modal.querySelector(".modal-close").addEventListener("click", modalClose);
-    modal.querySelector(".modal-stop").addEventListener("click", stopPropagation);
-    console.log(modal)
-}
+// const modalOpen = function (e) {
+//     modal.style.display = null;
+//     modal.removeAttribute("aria-hidden");
+//     modal.setAttribute("aria-modal","true");
+//     modal.addEventListener("click", modalClose);
+//     modal.querySelector(".modal-link-photo").addEventListener("click", modalContentPhoto)
+//     modal.querySelector(".modal-close").addEventListener("click", modalClose);
+//     modal.querySelector(".modal-stop").addEventListener("click", stopPropagation);
+//     console.log(modal)
+// }
 
-const modalClose = function (e) {
-    if (modal === null) return
-    modal.style.display = "none";
-    modal.setAttribute("aria-hidden", "true");
-    modal.removeAttribute("aria-modal");
-    modal.removeEventListener("click", modalClose);
-    modal.querySelector(".modal-close").removeEventListener("click", modalClose);
-    modal.querySelector(".modal-stop").removeEventListener("click", stopPropagation);
-    modal.innerHTML = ""
-    modal = null;
-    console.log(modal)
-}
 
-const stopPropagation = function (e) {
-    e.stopPropagation();
-}
+// const modalClose = function (e) {
+//     if (modal === null) return
+//     modal.style.display = "none";
+//     modal.setAttribute("aria-hidden", "true");
+//     modal.removeAttribute("aria-modal");
+//     modal.removeEventListener("click", modalClose);
+//     modal.querySelector(".modal-link-photo").removeEventListener("click", modalContentPhoto)
+//     modal.querySelector(".modal-close").removeEventListener("click", modalClose);
+//     modal.querySelector(".modal-stop").removeEventListener("click", stopPropagation);
+//     modal.innerHTML = ""
+//     modal = null;
+//     console.log(modal)
+// }
 
-function modalContentGallery() {
-    modal.innerHTML= 
-        `
-        <div class="modal-wrapper modal-stop">
-            <button class="modal-close">Fermer</button>
-            <h2 id="titlemodal1">Galerie photo</h2>
-            <div class="works">
-            </div>
-        </div>
-        `
-    let worksDiv = document.querySelector(".works")
+// const stopPropagation = function (e) {
+//     e.stopPropagation();
+// }
+
+// function modalContentGallery() {
+//     modal.innerHTML= 
+//         `
+//         <div class="modal-wrapper modal-stop">
+//             <button class="modal-close">Fermer</button>
+//             <h2 id="titlemodal1">Galerie photo</h2>
+//             <div class="works">
+//             </div>
+//             <button class="modal-link-photo">Ajouter une photo</button>
+//         </div>
+//         `
+//     let worksDiv = document.querySelector(".works")
+//     for (let i = 0; i < works.length; i++) {
+//         worksDiv.innerHTML += `
+//             <figure>
+//                 <img src="${works[i].imageUrl}"></img>
+//                 <img class="trash" src="./assets/icons/trash-can-solid.svg"></img>
+//             </figure>
+//         `
+//     }
+//     const trashcan = document.querySelectorAll(".trash") 
+//     console.log(trashcan)
+//     for (let i = 0; i < trashcan.length; i++) {
+//         trashcan[i].addEventListener("click", function() {
+//             deleteWork(i);
+//         });
+//     }
+// }
+
+// function modalContentPhoto() {
+//     modal.innerHTML = "";
+//     modal.innerHTML= 
+//         `
+//         <div class="modal-wrapper modal-stop">
+//             <button class="modal-close">Fermer</button>
+//             <h2 id="titlemodal1">Ajout photo</h2>
+
+//             <button class="modal-link-photo">Ajouter une photo</button>
+//         </div>
+//         `
+// }
+
+// async function deleteWork(id) {
+//     const userToken = localStorage.getItem("token");
+//     console.log(token)
+//     console.log(id)
+//     const reponse = await fetch(`http://localhost:5678/api/works/${id}`, {
+//         method: "DELETE",
+//         headers: {
+//             Authorization: `Bearer ${token}`,
+//         },
+//     })
+//     if (reponse.ok) {
+//         console.log("Image supprimée avec succès")
+//     }
+// }
+
+// const modalLink = document.querySelector(".modal-link")
+// modalLink.addEventListener("click", a => {
+//     a.preventDefault();
+//     modal = modalWindow;
+//     modalContentGallery();
+//     modalOpen();
+// })
+
+
+const modalGallery = document.querySelector(".modal1")
+const modalPhoto = document.querySelector(".modal2")
+const modalGalleryContent = document.querySelector(".modal1-content")
+const modalPhotoContent = document.querySelector(".modal2-content")
+const modalOpenButton = document.querySelector(".modal-open-button")
+const modalCloseButton = document.querySelectorAll(".modal-close-button")
+const modalGoPhoto = document.querySelector(".modal-go-photo")
+
+modalOpenButton.addEventListener("click", () => {
+    OpenModalGallery ();
+})
+
+modalGoPhoto.addEventListener("click", () => {
+    OpenModalPhoto ();
+})
+
+modalCloseButton.forEach((button) => {
+    button.addEventListener("click", closeModal);
+});
+
+modalGallery.addEventListener("click", (event) => {
+    if (event.target === modalGallery) {
+        modalGallery.close();
+    }
+});
+
+modalPhoto.addEventListener("click", (event) => {
+    if (event.target === modalPhoto) {
+        modalPhoto.close();
+    }
+});
+ 
+function OpenModalGallery () {
+    let worksDiv = document.querySelector(".modal-works")
+    worksDiv.innerHTML = ""
     for (let i = 0; i < works.length; i++) {
         worksDiv.innerHTML += `
             <figure>
-                <img src="${works[i].imageUrl}"></img>
+                <img class="work" src="${works[i].imageUrl}"></img>
                 <img class="trash" src="./assets/icons/trash-can-solid.svg"></img>
             </figure>
         `
     }
-    const trashcan = document.querySelectorAll(".trash") 
-    console.log(trashcan)
-    for (let i = 0; i < trashcan.length; i++) {
-        trashcan[i].addEventListener("click", function() {
-            deleteWork(i);
-        });
-    }
+    modalGallery.showModal();
 }
 
-function modalContentPhoto() {
-    `
-    <div class="modal" role="dialog" aria-modal="false" aria-labelledby="titlemodal1" style="display: none;">
-        <div class="modal-wrapper modal-stop">
-
-        </div>
-    </div>
-    `
+function OpenModalPhoto () {
+    modalGallery.close();
+    modalPhoto.showModal();
 }
 
-const modalLink = document.querySelector(".modal-link")
-modalLink.addEventListener("click", a => {
-    a.preventDefault();
-    modal = modalWindow;
-    modalContentGallery();
-    modalOpen();
-})
-
-    
-function deleteWork(id) {
-    const userToken = localStorage.getItem("token");
-    console.log(userToken)
-    fetch(`http://localhost:5678/api/works/${id}`, {
-        method: "delete",
-        headers: {
-            Authorization: `Bearer ${userToken}`,
-        }
-    }
-)}
+function closeModal () {
+    modalGallery.close();
+    modalPhoto.close();
+}

@@ -45,10 +45,10 @@
 		<h2 id="portfolio-title" class="none">Mes Projets</h2>
 		<div id= "portfolio-modifier" class="title none">
 			<h2>Mes Projets</h2>
-			<a href="#modal" class="modal-link modifier">
+			<button class="modal-open-button">
 				<img src="./assets/icons/pen-to-square-regular (B).svg" alt="">
 				<p>Modifier</p>	
-			</a>
+			</button>
 		</div>
 		<div class="filter none">
 			<p class="tous selected">Tous</p>
@@ -59,8 +59,20 @@
 		<div class="gallery">
 			<!-- Récupération des travaux depuis le back-end -->
 		</div>
-		<aside id="modal" class="modal" role="dialog" aria-modal="false" aria-labelledby="titlemodal1" style="display: none;">
-		</aside>
+		<dialog class="modal1 modal-box">
+			<div class="modal1-content">
+				<button class="modal-close-button">X</button>
+				<h2>Galerie photo</h2>
+				<div class="modal-works"></div>
+				<button class="modal-go-photo">Ajouter une photo</button>
+			</div>
+		</dialog>
+		<dialog class="modal2">
+			<div class="modal2-content">
+				<button class="modal-close-button">X</button>
+				<h2>Ajout photo</h2>
+			</div>
+		</dialog>
 	</section>
 	<section id="contact">
 		<h2>Contact</h2>

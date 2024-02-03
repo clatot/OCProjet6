@@ -260,26 +260,15 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
-.modal {
-	position: fixed;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.8);
-}
-
-.modal-wrapper {
+.modal-box {
 	background-color: #FFFFFF;
+	border: 0px;
 	width: 630px;
 	height: 688px;
 	padding: 25px;
 }
 
-.modal .works {
+.modal-box .modal-works {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
@@ -288,12 +277,12 @@ input[type="submit"]{
 	gap: 10px;
 }
 
-.modal .works img {
+.modal-box .work {
 	height: 100px;
 	width: 75px;
 }
 
-.modal .works .trash {
+.modal-box .trash {
 	height: 17px;
 	width: 17px;
 	padding: 2px;
