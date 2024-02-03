@@ -222,6 +222,7 @@ const modalPhotoContent = document.querySelector(".modal2-content")
 const modalOpenButton = document.querySelector(".modal-open-button")
 const modalCloseButton = document.querySelectorAll(".modal-close-button")
 const modalGoPhoto = document.querySelector(".modal-go-photo")
+const modalGoGallery = document.querySelector(".modal-go-gallery")
 
 modalOpenButton.addEventListener("click", () => {
     OpenModalGallery ();
@@ -230,6 +231,11 @@ modalOpenButton.addEventListener("click", () => {
 modalGoPhoto.addEventListener("click", () => {
     OpenModalPhoto ();
 })
+
+modalGoGallery.addEventListener("click", () => {
+    OpenModalGallery ();
+})
+
 
 modalCloseButton.forEach((button) => {
     button.addEventListener("click", closeModal);
@@ -259,6 +265,14 @@ function OpenModalGallery () {
         `
     }
     modalGallery.showModal();
+
+    const trashcan = document.querySelectorAll(".trash") 
+    console.log(trashcan)
+    for (let i = 0; i < trashcan.length; i++) {
+        trashcan[i].addEventListener("click", function() {
+        deleteWork(i);
+        });
+    }
 }
 
 function OpenModalPhoto () {
@@ -269,4 +283,20 @@ function OpenModalPhoto () {
 function closeModal () {
     modalGallery.close();
     modalPhoto.close();
+}
+
+
+async function deleteWork(id) {
+    const userToken = localStorage.getItem("token");
+    console.log(token)
+    console.log(id)
+    const reponse = await fetch(`http://localhost:5678/api/works/${id}`, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
+    if (reponse.ok) {
+        console.log("Image supprimée avec succès")
+    }
 }
