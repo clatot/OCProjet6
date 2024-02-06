@@ -268,18 +268,30 @@ input[type="submit"]{
 	padding: 25px;
 }
 
+.modal-contant {
+	margin: auto;
+	max-width: 420px;
+}
+
 .modal-box .modal-works {
+	width: auto;
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
 	justify-content: flex-start;
-	margin: 50px;
 	gap: 10px;
+	padding-bottom: 20px;
+}
+
+.modal-box .modal-works figure {
+	width: 76px;
+	height: 102px;
+	margin-bottom: 20px;
 }
 
 .modal-box .work {
-	height: 100px;
-	width: 75px;
+	height: 102px;
+	width: 76px;
 }
 
 .modal-box .trash {
@@ -287,10 +299,41 @@ input[type="submit"]{
 	width: 17px;
 	padding: 2px;
 	position: relative;
-	bottom: 78px;
-	right: 28px;
+	bottom: 100px;
+	left: 55px;
 	background-color: #000000;
 	border-radius: 3px;
+}
+
+.modal-box .modal-submit-container {
+	display: flex;
+	justify-content: center;
+}
+
+.modal-box .modal-submit {
+	font-family: 'Syne';
+	font-weight: 700;
+	border: 0;
+	padding: 10px 50px;
+	border-radius: 60px;
+	background-color: #1D6154;
+	color: #FFFFFF;
+}
+
+.modal-box .modal-form {
+	text-align: left;
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+	max-width: 420px;
+	margin: auto;
+}
+
+.modal-box .modal-form input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
 footer nav ul {

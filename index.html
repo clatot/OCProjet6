@@ -61,33 +61,33 @@
 		</div>
 		<dialog class="modal1 modal-box">
 				<button class="modal-close-button">X</button>
+				<div class="modal-contant">
 				<h2>Galerie photo</h2>
 				<div class="modal-works"></div>
-				<button class="modal-go-photo">Ajouter une photo</button>
+				<div class="modal-submit-container"><button class="modal-go-photo modal-submit">Ajouter une photo</button></div>
+				</div>
 		</dialog>
 		<dialog class="modal2 modal-box">
 				<button class="modal-go-gallery"><-</button>
 				<button class="modal-close-button">X</button>
 				<h2>Ajout photo</h2>
-				<form class="form" method="dialog">
-					<!-- Titre -->
-					<label for="titre">Titre :</label>
-					<input type="text" id="titre" name="titre" required>
-					
+				<form class="form modal-form" method="dialog" id="form">
 					<!-- Upload d'Image -->
-					<label for="image">Upload d'Image :</label>
+					<label for="image">+ Ajouter photo</label>
 					<input type="file" id="image" name="image" accept="image/*" required>
 					
-					<!-- Radio avec 3 numéros -->
-					<label>Choisissez un numéro :</label>
-					<input type="radio" id="numero1" name="numero" value="1" required>
-					<label for="numero1">1</label>
+					<!-- Titre -->
+					<label for="titre">Titre</label>
+					<input type="text" id="titre" name="titre" required>
 					
-					<input type="radio" id="numero2" name="numero" value="2" required>
-					<label for="numero2">2</label>
-					
-					<input type="radio" id="numero3" name="numero" value="3" required>
-					<label for="numero3">3</label>
+					<!-- Catégorie -->
+					<label for="choixOptions">Catégorie</label>
+					<select id="choixOptions" name="choixOptions" required>
+						<option value=""></option>
+						<option value="1">Objets</option>
+						<option value="2">Appartements</option>
+						<option value="3">Bar & restaurants</option>
+					</select>
 			
 					<!-- Bouton de soumission -->
 					<input type="submit" value="Soumettre">

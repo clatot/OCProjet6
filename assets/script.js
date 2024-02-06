@@ -1,8 +1,9 @@
+// Génération liste Works
 const reponse = await fetch("http://localhost:5678/api/works")
 const works = await reponse.json()
 console.log(works)
 
-
+// Génération galerie 
 function genererWorks(works) {
     const galerie = document.querySelector(".gallery")
     for (let i = 0; i < works.length; i++) {
@@ -17,6 +18,7 @@ function genererWorks(works) {
 
 genererWorks(works)
 
+// Comportement Filtres
 const boutonsFiltrer = document.querySelectorAll(".filter > p");
 let workList = "";
 
@@ -52,6 +54,7 @@ function boutonFilter(index) {
 
 eventListenerFilter(boutonsFiltrer);
 
+//Comportement Authentification Token 
 const login = document.querySelector("#login")
 const title = document.querySelector("#portfolio-title")
 const filter = document.querySelector(".filter")
@@ -86,6 +89,8 @@ if (!token) {
         window.location = "./index.html"
     })
 }
+
+// Comportement modal
 
 const modalGallery = document.querySelector(".modal1")
 const modalPhoto = document.querySelector(".modal2")
@@ -156,6 +161,7 @@ function closeModal () {
     modalPhoto.close();
 }
 
+// Delete Works 
 async function deleteWork(id) {
     let userToken = localStorage.getItem("token");
     userToken = JSON.parse(userToken);
@@ -168,8 +174,21 @@ async function deleteWork(id) {
         },
     })
     if (reponse.ok) {
-        console.log("Image supprimée avec succès")
-        document.querySelector(".gallery").innerHTML = ""
-        genererWorks(works)
+        console.log("Image supprimée avec succès");
+        closeModal();
+        document.querySelector(".gallery").innerHTML = "";
+        console.log(document.querySelector(".gallery"))
+        genererWorks(works);    
+        OpenModalGallery();
     }
 }
+
+const SendPhotoForm = document.querySelector(".modal-form");
+SendPhotoForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    for (const [name,value] of data) {
+      console.log(name, ":", value)
+    }
+    closeModal();
+})
