@@ -7,10 +7,11 @@ console.log(works)
 function genererWorks(works) {
     const galerie = document.querySelector(".gallery")
     for (let i = 0; i < works.length; i++) {
+        let workId = works[i].id;
         galerie.innerHTML += `
-            <figure>
+            <figure >
                 <img src="${works[i].imageUrl}"></img>
-                <figcaption>${works[i].title}</figcaption>
+                <figcaption data-id="${workId}">${works[i].title}</figcaption>
             </figure>
         `
     }
@@ -174,20 +175,19 @@ async function deleteWork(id) {
     })
     if (reponse.ok) {
         console.log("Image supprimée avec succès");
-
-        const el = document.getElementBy('[data-id="${id}"]')
-
-        // closeModal();
-        // document.querySelector(".gallery").innerHTML = "";
-        // console.log(document.querySelector(".gallery"))
-        // genererWorks(works);    
-        // OpenModalGallery();
+        
+        let deletedWork = RefreshWork(id);
     }
 }
 
-function RefreshWorks(id) {
-    const el = document.getElementBy('[data-id="${id}"]');
-
+function RefreshWork (id) {
+    let deletedWork = document.querySelectorAll('[data-id]');
+    for (let i = 0; i < deletedWork.length; i++) {
+        if (deletedWork[i].dataset['id'] === id) {
+            let parentWork = deletedWork[i].parentNode;
+            parentWork.remove();
+        }
+    }
 }
 
 const SendPhotoForm = document.querySelector(".modal-form");
