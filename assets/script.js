@@ -11,7 +11,7 @@ function genererWorks(works) {
             <figure>
                 <img src="${works[i].imageUrl}"></img>
                 <figcaption>${works[i].title}</figcaption>
-            <figure>
+            </figure>
         `
     }
 }
@@ -133,20 +133,21 @@ function OpenModalGallery () {
     let worksDiv = document.querySelector(".modal-works")
     worksDiv.innerHTML = ""
     for (let i = 0; i < works.length; i++) {
+        let workId = works[i].id;
         worksDiv.innerHTML += `
             <figure>
-                <img class="work" src="${works[i].imageUrl}"></img>
-                <img class="trash" src="./assets/icons/trash-can-solid.svg"></img>
+                <img class="work" src="${works[i].imageUrl}" data-id="${workId}"></img>
+                <img class="trash" src="./assets/icons/trash-can-solid.svg" data-id="${workId}"></img>
             </figure>
-        `
+        ` 
     }
+    console.log(worksDiv)
     modalGallery.showModal();
 
     const trashcan = document.querySelectorAll(".trash") 
-    console.log(trashcan)
     for (let i = 0; i < trashcan.length; i++) {
         trashcan[i].addEventListener("click", function() {
-        deleteWork(i+1);
+        deleteWork(trashcan[i].dataset.id);
         });
     }
 }
@@ -163,9 +164,7 @@ function closeModal () {
 
 // Delete Works 
 async function deleteWork(id) {
-    let userToken = localStorage.getItem("token");
-    userToken = JSON.parse(userToken);
-    console.log(token)
+    let userToken = JSON.parse(localStorage.getItem("token"));
     console.log(id)
     const reponse = await fetch(`http://localhost:5678/api/works/${id}`, {
         method: "DELETE",
@@ -175,12 +174,20 @@ async function deleteWork(id) {
     })
     if (reponse.ok) {
         console.log("Image supprimée avec succès");
-        closeModal();
-        document.querySelector(".gallery").innerHTML = "";
-        console.log(document.querySelector(".gallery"))
-        genererWorks(works);    
-        OpenModalGallery();
+
+        const el = document.getElementBy('[data-id="${id}"]')
+
+        // closeModal();
+        // document.querySelector(".gallery").innerHTML = "";
+        // console.log(document.querySelector(".gallery"))
+        // genererWorks(works);    
+        // OpenModalGallery();
     }
+}
+
+function RefreshWorks(id) {
+    const el = document.getElementBy('[data-id="${id}"]');
+
 }
 
 const SendPhotoForm = document.querySelector(".modal-form");
