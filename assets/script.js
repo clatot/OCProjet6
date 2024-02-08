@@ -176,7 +176,7 @@ async function deleteWork(id) {
     if (reponse.ok) {
         console.log("Image supprimée avec succès");
         
-        let deletedWork = RefreshWork(id);
+        RefreshWork(id);
     }
 }
 
@@ -193,9 +193,39 @@ function RefreshWork (id) {
 const SendPhotoForm = document.querySelector(".modal-form");
 SendPhotoForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const data = new FormData(form);
-    for (const [name,value] of data) {
-      console.log(name, ":", value)
-    }
+    addWork();
     closeModal();
 })
+
+console.log(token)
+
+
+async function addWork() {
+    let userToken = JSON.parse(localStorage.getItem("token"));
+    const file = document.getElementById("image").files[0];
+    const title = document.getElementById("titre").value;
+    const category = document.getElementById("categorie").value;
+    console.log(file)
+    console.log(title)
+    console.log(category)
+
+    let formData = new FormData();
+    formData.append("image", file);
+    formData.append("title", title);
+    formData.append("category", category);
+
+    for (const pair of formData.entries()) {
+        console.log(pair[0], pair[1], pair[2])
+    }
+
+    const reponse = await fetch(`http://localhost:5678/api/works/`, {
+        method: "POST",
+        headers: { 
+            Authorization: `Bearer ${userToken}`,
+        },
+        body: formData,
+    });
+    if (reponse.ok) {
+        console.log("Image Ajoutée avec succès");
+    }
+}
