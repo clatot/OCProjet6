@@ -310,6 +310,48 @@ input[type="submit"]{
 	justify-content: center;
 }
 
+.modal-box .modal-file-container {
+	position: relative;
+	height: 169px;
+	width: 420px;
+	background-color: #E8F1F6;
+	border-radius: 3px;
+}
+
+.modal-box .modal-file-container input[type="file"] {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	cursor: pointer;
+}
+
+.modal-box .modal-file-container label {
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	cursor: pointer;
+}
+
+.modal-box .modal-file-container img {
+	height: 76px;
+	width: 76px;
+}
+
+.modal-box .modal-file-container .filled {
+	height: 169px;
+	width: 129px;
+	object-fit: cover;
+}
+
+.modal-box .none {
+	display: none;
+}
+
 .modal-box .modal-submit {
 	font-family: 'Syne';
 	font-weight: 700;

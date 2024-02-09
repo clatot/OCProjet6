@@ -73,12 +73,18 @@
 				<h2>Ajout photo</h2>
 				<form class="form modal-form" method="dialog" id="form">
 					<!-- Upload d'Image -->
-					<label for="image">+ Ajouter photo</label>
-					<input type="file" id="image" name="image" accept="image/*" required>
-					
+					<div class="modal-file-container">
+						<input type="file" id="image" name="image" accept="image/*" required>
+						<label for="image">
+							<img src="./assets/icons/placeholder.svg" alt="">
+							<button>+ Ajouter photo</button>
+							<span>jpg, png : 4mo max</span>
+						</label>
+					</div>
+
 					<!-- Titre -->
 					<label for="titre">Titre</label>
-					<input type="text" id="titre" name="titre" required>
+					<input type="text" id="titre" name="titre" maxlength="40" required>
 					
 					<!-- Catégorie -->
 					<label for="categorie">Catégorie</label>

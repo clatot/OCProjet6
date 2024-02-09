@@ -133,6 +133,8 @@ modalPhoto.addEventListener("click", (event) => {
 function OpenModalGallery () {
     let worksDiv = document.querySelector(".modal-works")
     worksDiv.innerHTML = ""
+    console.log(works)
+    console.log(worksDiv.innerHTML)
     for (let i = 0; i < works.length; i++) {
         let workId = works[i].id;
         worksDiv.innerHTML += `
@@ -142,7 +144,6 @@ function OpenModalGallery () {
             </figure>
         ` 
     }
-    console.log(worksDiv)
     modalGallery.showModal();
 
     const trashcan = document.querySelectorAll(".trash") 
@@ -192,6 +193,9 @@ function RefreshWork (id) {
 
 const SendPhotoForm = document.querySelector(".modal-form");
 const inputFile = document.querySelector("#image")
+const imagePreview = document.querySelector(".modal-box .modal-file-container img")
+const buttonLabel = document.querySelector(".modal-box .modal-file-container button")
+const spanLabel = document.querySelector(".modal-box .modal-file-container span")
 inputFile.addEventListener("change", (event) => {
     let file = event.target.files[0];
     if (file.size > 4 * 1024 * 1024) {
@@ -206,7 +210,21 @@ inputFile.addEventListener("change", (event) => {
         inputFile.value = "";
         return;
     }
- })
+    
+    if (inputFile.files.length > 0) {
+        const file = inputFile.files[0];
+        const objectURL = URL.createObjectURL(file);
+        imagePreview.src = objectURL;
+        buttonLabel.classList.add("none");
+        spanLabel.classList.add("none");
+        imagePreview.classList.add("filled");
+    } else {
+        imagePreview.src = "./assets/icons/placeholder.svg";
+        buttonLabel.classList.remove("none");
+        spanLabel.classList.remove("none");
+        imagePreview.classList.remove("filled");
+    }
+ });
 
 SendPhotoForm.addEventListener("submit", (e) => {
     e.preventDefault();
