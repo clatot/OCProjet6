@@ -131,7 +131,9 @@ modalPhoto.addEventListener("click", (event) => {
     }
 });
  
-function OpenModalGallery () {
+async function OpenModalGallery () {
+    const reponse = await fetch("http://localhost:5678/api/works")
+    const works = await reponse.json()
     let worksDiv = document.querySelector(".modal-works")
     worksDiv.innerHTML = ""
     console.log(works)
