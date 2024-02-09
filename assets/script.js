@@ -191,14 +191,28 @@ function RefreshWork (id) {
 }
 
 const SendPhotoForm = document.querySelector(".modal-form");
+const inputFile = document.querySelector("#image")
+inputFile.addEventListener("change", (event) => {
+    let file = event.target.files[0];
+    if (file.size > 4 * 1024 * 1024) {
+        alert("Le fichier est trop volumineux.");
+        inputFile.value = "";
+        return;
+    }
+
+    const fileFormats = ["image/jpeg", "image/png"]
+    if (!fileFormats.includes(file.type)) {
+        alert("Le format du fichier n'est pas autorisé.");
+        inputFile.value = "";
+        return;
+    }
+ })
+
 SendPhotoForm.addEventListener("submit", (e) => {
     e.preventDefault();
     addWork();
     closeModal();
 })
-
-console.log(token)
-
 
 async function addWork() {
     let userToken = JSON.parse(localStorage.getItem("token"));
