@@ -107,6 +107,7 @@ modalOpenButton.addEventListener("click", () => {
 })
 
 modalGoPhoto.addEventListener("click", () => {
+    refreshPhotoForm();
     OpenModalPhoto ();
 })
 
@@ -189,6 +190,7 @@ function RefreshWork (id) {
             parentWork.remove();
         }
     }
+    
 }
 
 const SendPhotoForm = document.querySelector(".modal-form");
@@ -219,12 +221,17 @@ inputFile.addEventListener("change", (event) => {
         spanLabel.classList.add("none");
         imagePreview.classList.add("filled");
     } else {
-        imagePreview.src = "./assets/icons/placeholder.svg";
-        buttonLabel.classList.remove("none");
-        spanLabel.classList.remove("none");
-        imagePreview.classList.remove("filled");
+        refreshPhotoForm()
     }
  });
+
+ function refreshPhotoForm () {
+    imagePreview.src = "./assets/icons/placeholder.svg";
+    buttonLabel.classList.remove("none");
+    spanLabel.classList.remove("none");
+    imagePreview.classList.remove("filled");
+    inputFile.value = "";
+ }
 
 SendPhotoForm.addEventListener("submit", (e) => {
     e.preventDefault();

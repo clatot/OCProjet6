@@ -331,20 +331,38 @@ input[type="submit"]{
 
 .modal-box .modal-file-container label {
 	position: relative;
+	top: 15px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 	cursor: pointer;
+	gap: 10px;
+}
+
+.modal-box .modal-file-container button {
+	font-size: 14px;
+	color: #306685;
+	width: 173px;
+	height: 36px;
+	border: 0;
+	background-color: #CBD6DC;
+	border-radius: 50px;
+}
+
+.modal-box .modal-file-container span {
+	font-size: 10px;
 }
 
 .modal-box .modal-file-container img {
-	height: 76px;
-	width: 76px;
+	height: 60px;
+	width: 68px;
 }
 
 .modal-box .modal-file-container .filled {
 	height: 169px;
 	width: 129px;
+	position: relative;
+	top: -15px;
 	object-fit: cover;
 }
 
