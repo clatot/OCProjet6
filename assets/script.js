@@ -132,8 +132,6 @@ modalPhoto.addEventListener("click", (event) => {
 });
  
 async function OpenModalGallery () {
-    const reponse = await fetch("http://localhost:5678/api/works")
-    const works = await reponse.json()
     let worksDiv = document.querySelector(".modal-works")
     worksDiv.innerHTML = ""
     console.log(works)
@@ -155,6 +153,7 @@ async function OpenModalGallery () {
         deleteWork(trashcan[i].dataset.id);
         });
     }
+    modalPhoto.close();
 }
 
 function OpenModalPhoto () {
@@ -180,6 +179,9 @@ async function deleteWork(id) {
     if (reponse.ok) {
         console.log("Image supprimée avec succès");
         
+        const indexRemoved = works.findIndex((work) => work.id === id);
+        works.splice(indexRemoved, 1);
+
         RefreshWork(id);
     }
 }
