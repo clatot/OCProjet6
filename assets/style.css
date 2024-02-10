@@ -426,7 +426,7 @@ input[type="submit"]{
 	cursor: pointer;
 }
 
-.modal-box .disabled-submit {
+.modal-box .modal-form:invalid input[type="submit"] {
 	background-color: #A7A7A7;
 }
 
