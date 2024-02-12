@@ -47,7 +47,7 @@
 			<h2>Mes Projets</h2>
 			<button class="modal-open-button">
 				<img src="./assets/icons/pen-to-square-regular (B).svg" alt="">
-				<p>Modifier</p>	
+				<p>modifier</p>	
 			</button>
 		</div>
 		<div class="filter none">
@@ -59,56 +59,59 @@
 		<div class="gallery">
 			<!-- Récupération des travaux depuis le back-end -->
 		</div>
-		<dialog class="modal1 modal">
-			<div class="modal-box">
-				<div class="modal-button">
-					<button class="modal-close-button"><img src="./assets/icons/xmark-solid.svg" alt=""></button>
+		<div id="modal">
+			<dialog class="modal1 modal">
+				<div class="modal-box">
+					<div class="modal-button">
+						<button class="modal-close-button"><img src="./assets/icons/xmark-solid.svg" alt=""></button>
+					</div>
+					<div class="modal-contant">
+						<h2>Galerie photo</h2>
+						<hr>
+						<div class="modal-works"></div>
+						<div class="modal-submit-container"><button class="modal-go-photo modal-submit">Ajouter une photo</button></div>
+					</div>
 				</div>
-				<div class="modal-contant">
-					<h2>Galerie photo</h2>
-					<div class="modal-works"></div>
-					<div class="modal-submit-container"><button class="modal-go-photo modal-submit">Ajouter une photo</button></div>
+			</dialog>
+			<dialog class="modal2 modal">
+				<div  class="modal-box">
+					<div class="modal-button">
+						<button class="modal-go-gallery"><img src="./assets/icons/arrow-left-solid.svg" alt=""></button>
+						<button class="modal-close-button"><img src="./assets/icons/xmark-solid.svg" alt=""></button>
+					</div>
+					<div class="modal-contant">
+						<h2>Ajout photo</h2>
+						<form class="form modal-form" method="dialog" id="form">
+							<!-- Upload d'Image -->
+							<div class="modal-file-container">
+								<input type="file" id="image" name="image" accept="image/*" required>
+								<label for="image">
+									<img src="./assets/icons/placeholder.svg" alt="">
+									<button>+ Ajouter photo</button>
+									<span>jpg, png : 4mo max</span>
+								</label>
+							</div>
+	
+							<!-- Titre -->
+							<label for="titre">Titre</label>
+							<input type="text" id="titre" name="titre" maxlength="40" required>
+							
+							<!-- Catégorie -->
+							<label for="categorie">Catégorie</label>
+							<select id="categorie" name="categorie" required>
+								<option value=""></option>
+								<option value="1">Objets</option>
+								<option value="2">Appartements</option>
+								<option value="3">Bar & restaurants</option>
+							</select>
+					
+							<!-- Bouton de soumission -->
+							<input type="submit" value="Soumettre">
+						</form>
+					</div>
 				</div>
-			</div>
-		</dialog>
-		<dialog class="modal2 modal">
-			<div  class="modal-box">
-				<div class="modal-button">
-					<button class="modal-go-gallery"><img src="./assets/icons/arrow-left-solid.svg" alt=""></button>
-					<button class="modal-close-button"><img src="./assets/icons/xmark-solid.svg" alt=""></button>
-				</div>
-				<div class="modal-contant">
-					<h2>Ajout photo</h2>
-					<form class="form modal-form" method="dialog" id="form">
-						<!-- Upload d'Image -->
-						<div class="modal-file-container">
-							<input type="file" id="image" name="image" accept="image/*" required>
-							<label for="image">
-								<img src="./assets/icons/placeholder.svg" alt="">
-								<button>+ Ajouter photo</button>
-								<span>jpg, png : 4mo max</span>
-							</label>
-						</div>
-
-						<!-- Titre -->
-						<label for="titre">Titre</label>
-						<input type="text" id="titre" name="titre" maxlength="40" required>
-						
-						<!-- Catégorie -->
-						<label for="categorie">Catégorie</label>
-						<select id="categorie" name="categorie" required>
-							<option value=""></option>
-							<option value="1">Objets</option>
-							<option value="2">Appartements</option>
-							<option value="3">Bar & restaurants</option>
-						</select>
-				
-						<!-- Bouton de soumission -->
-						<input type="submit" value="Soumettre">
-					</form>
-				</div>
-			</div>
-		</dialog>
+			</dialog>
+		</div>
 	</section>
 	<section id="contact">
 		<h2>Contact</h2>
