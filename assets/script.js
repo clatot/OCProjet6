@@ -1,7 +1,6 @@
 // Génération liste Works
-let reponse = await fetch("http://localhost:5678/api/works")
-let works = await reponse.json()
-console.log(works)
+    let reponse = await fetch("http://localhost:5678/api/works");
+    let works = await reponse.json();
 
 // Génération galerie 
 function genererWorks(works) {
@@ -169,7 +168,6 @@ function closeModal () {
 // Delete Works 
 async function deleteWork(id) {
     let userToken = JSON.parse(localStorage.getItem("token"));
-    console.log(id)
     const reponse = await fetch(`http://localhost:5678/api/works/${id}`, {
         method: "DELETE",
         headers: {
@@ -274,6 +272,12 @@ async function addWork() {
     });
     if (reponse.ok) {
         console.log("Image Ajoutée avec succès");
+
         refreshPhotoForm();
+
+        const reponse = await fetch("http://localhost:5678/api/works");
+        works = await reponse.json();
+        document.querySelector(".gallery").innerHTML = "";
+        genererWorks(works);
     }
 }

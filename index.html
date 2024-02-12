@@ -67,8 +67,9 @@
 					</div>
 					<div class="modal-contant">
 						<h2>Galerie photo</h2>
-						<hr>
+						<hr class="bar">
 						<div class="modal-works"></div>
+						<hr class="line">
 						<div class="modal-submit-container"><button class="modal-go-photo modal-submit">Ajouter une photo</button></div>
 					</div>
 				</div>
@@ -91,12 +92,11 @@
 									<span>jpg, png : 4mo max</span>
 								</label>
 							</div>
-	
-							<!-- Titre -->
-							<label for="titre">Titre</label>
-							<input type="text" id="titre" name="titre" maxlength="40" required>
-							
-							<!-- Catégorie -->
+							<div class="modal-form-container">
+								<label for="titre">Titre</label>
+								<input type="text" id="titre" name="titre" maxlength="40" required>
+							</div>
+							<div class="modal-form-container">
 							<label for="categorie">Catégorie</label>
 							<select id="categorie" name="categorie" required>
 								<option value=""></option>
@@ -104,9 +104,9 @@
 								<option value="2">Appartements</option>
 								<option value="3">Bar & restaurants</option>
 							</select>
-					
-							<!-- Bouton de soumission -->
-							<input type="submit" value="Soumettre">
+							</div>
+							<hr class="line">
+							<input type="submit" value="Valider" class="modal-form-submit">
 						</form>
 					</div>
 				</div>

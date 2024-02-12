@@ -231,7 +231,14 @@ header .none {
 
 .gallery img {
 	width: 100%;
+	width: 305px;
+	height: 407px;
 }
+
+.gallery figcaption {
+	overflow: hidden;
+}
+
 #contact {
 	width: 50%;
 margin: auto;
@@ -298,11 +305,18 @@ input[type="submit"]{
 	background-color: #FFFFFF;
 	border: 0px;
 	padding: 0px;
+	border-radius: 10px;
 }
 
-#modal .modal-box {
+#modal .modal1 {
 	padding: 25px;	
-	height: 688px;
+	min-height: 688px;
+	width: 630px;
+}
+
+#modal .modal2 {
+	padding: 25px;	
+	min-height: 670px;
 	width: 630px;
 }
 
@@ -331,6 +345,7 @@ input[type="submit"]{
 #modal .modal-contant {
 	margin: auto;
 	max-width: 420px;
+	margin-top: 15px;
 }
 
 #modal .modal-box .modal-works {
@@ -340,13 +355,12 @@ input[type="submit"]{
 	flex-direction: row;
 	justify-content: flex-start;
 	gap: 10px;
-	padding-bottom: 20px;
 }
 
 #modal .modal-box .modal-works figure {
 	width: 76px;
 	height: 102px;
-	margin-bottom: 20px;
+	margin: 10px 0px;
 }
 
 #modal .modal-box .work {
@@ -360,13 +374,25 @@ input[type="submit"]{
 	font-size: 26px;
 	font-weight: normal;
 	font-family: 'Work Sans';
+	text-align: center;
 }
 
-#modal .modal-box hr {
+#modal .modal-box .bar {
 	background-color: #d9d9d9;
 	width: 420px;
 	height: 7px;
 	border: 0px;
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+#modal .modal-box .line {
+	background-color: #d9d9d9;
+	width: 420px;
+	height: 1px;
+	border: 0px;
+	margin-top: 55px;
+	margin-bottom: 35px;
 }
 
 #modal .trash {
@@ -383,8 +409,9 @@ input[type="submit"]{
 #modal .modal-submit-container {
 	display: flex;
 	justify-content: center;
-
 }
+
+/* Modal 2 */
 
 #modal .modal-file-container {
 	position: relative;
@@ -443,6 +470,15 @@ input[type="submit"]{
 	object-fit: cover;
 }
 
+#modal .modal-form-container {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin: 30px 0px 0px 0px;
+	color: #3D3D3D;
+	font-weight: 700;
+}
+
 #modal .modal-box .none {
 	display: none;
 }
@@ -465,14 +501,26 @@ input[type="submit"]{
 	flex-direction: column;
 	max-width: 420px;
 	margin: auto;
+	padding-top: 35px;
 }
 
-#modal .modal-form input {
+#modal .modal-form-container input, #modal .modal-form-container select {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	cursor: pointer;
+	color: #444444;
+	font-family: "Work Sans";
+	padding-left: 15px;
+}
+
+#modal .modal-form input[type="submit"] {
+	border: 0;
+	height: 36px;
+	width: 230px;
+	font-size: 14px;
+	margin-top: 0px;
 }
 
 #modal .modal-form:invalid input[type="submit"] {
