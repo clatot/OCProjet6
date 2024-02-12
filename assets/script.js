@@ -1,6 +1,6 @@
 // Génération liste Works
-const reponse = await fetch("http://localhost:5678/api/works")
-const works = await reponse.json()
+let reponse = await fetch("http://localhost:5678/api/works")
+let works = await reponse.json()
 console.log(works)
 
 // Génération galerie 
@@ -179,8 +179,8 @@ async function deleteWork(id) {
     if (reponse.ok) {
         console.log("Image supprimée avec succès");
         
-        const indexRemoved = works.findIndex((work) => work.id === id);
-        works.splice(indexRemoved, 1);
+        const reponse = await fetch("http://localhost:5678/api/works")
+        works = await reponse.json()
 
         RefreshWork(id);
     }
@@ -199,6 +199,8 @@ function RefreshWork (id) {
 
 const SendPhotoForm = document.querySelector(".modal-form");
 const inputFile = document.querySelector("#image")
+const inputTitre = document.querySelector("#titre")
+const inputCategorie = document.querySelector("#categorie")
 const imagePreview = document.querySelector(".modal-box .modal-file-container img")
 const buttonLabel = document.querySelector(".modal-box .modal-file-container button")
 const spanLabel = document.querySelector(".modal-box .modal-file-container span")
@@ -235,6 +237,8 @@ inputFile.addEventListener("change", (event) => {
     spanLabel.classList.remove("none");
     imagePreview.classList.remove("filled");
     inputFile.value = "";
+    inputTitre.value = "";
+    inputCategorie.value = "";
  }
 
 SendPhotoForm.addEventListener("submit", (e) => {
@@ -270,5 +274,6 @@ async function addWork() {
     });
     if (reponse.ok) {
         console.log("Image Ajoutée avec succès");
+        refreshPhotoForm();
     }
 }
