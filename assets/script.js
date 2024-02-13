@@ -1,6 +1,6 @@
 // Génération liste Works
-    let reponse = await fetch("http://localhost:5678/api/works");
-    let works = await reponse.json();
+let reponse = await fetch("http://localhost:5678/api/works");
+let works = await reponse.json();
 
 // Génération galerie 
 function genererWorks(works) {
@@ -131,9 +131,9 @@ modalPhoto.addEventListener("click", (event) => {
 });
  
 async function OpenModalGallery () {
+    console.log(works)
     let worksDiv = document.querySelector(".modal-works")
     worksDiv.innerHTML = ""
-    console.log(works)
     console.log(worksDiv.innerHTML)
     for (let i = 0; i < works.length; i++) {
         let workId = works[i].id;
@@ -165,34 +165,37 @@ function closeModal () {
     modalPhoto.close();
 }
 
+
 // Delete Works 
-async function deleteWork(id) {
+async function deleteWork(idWork) {
     let userToken = JSON.parse(localStorage.getItem("token"));
-    const reponse = await fetch(`http://localhost:5678/api/works/${id}`, {
+    const reponse = await fetch(`http://localhost:5678/api/works/${idWork}`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${userToken}`,
         },
     })
     if (reponse.ok) {
-        console.log("Image supprimée avec succès");
-        
-        const reponse = await fetch("http://localhost:5678/api/works")
-        works = await reponse.json()
-
-        RefreshWork(id);
+        for (let i = 0; i < works.length; i++) {
+            if (works[i].id == idWork) {
+                console.log("GOOD")
+                works.splice(i, 1)
+            } else {
+                console.log("RIP")
+            }
+        }
+        let deletedWork = document.querySelectorAll('[data-id]');
+        for (let i = 0; i < deletedWork.length; i++) {
+            if (deletedWork[i].dataset['id'] === idWork) {
+                let parentWork = deletedWork[i].parentNode;
+                parentWork.remove();
+            }
+        }
     }
 }
 
-function RefreshWork (id) {
-    let deletedWork = document.querySelectorAll('[data-id]');
-    for (let i = 0; i < deletedWork.length; i++) {
-        if (deletedWork[i].dataset['id'] === id) {
-            let parentWork = deletedWork[i].parentNode;
-            parentWork.remove();
-        }
-    }
-    
+function findIndexByDataId(element) {
+    return element.dataset.id === idWork;
 }
 
 const SendPhotoForm = document.querySelector(".modal-form");
@@ -269,15 +272,20 @@ async function addWork() {
             Authorization: `Bearer ${userToken}`,
         },
         body: formData,
-    });
-    if (reponse.ok) {
-        console.log("Image Ajoutée avec succès");
+    })
+    .then (response => {
+        if (!response.ok) {
+            alert("L'image n'a pas pu etre ajoutée.")
+        }
+        return response.json();
+    })
+    .then((addedWork) => {
+        works.push(addedWork)
+        document.querySelector(".gallery").innerHTML = "";
+        genererWorks(works)
 
         refreshPhotoForm();
 
-        const reponse = await fetch("http://localhost:5678/api/works");
-        works = await reponse.json();
-        document.querySelector(".gallery").innerHTML = "";
-        genererWorks(works);
-    }
-}
+        console.log("Image Ajoutée avec succès");
+    })
+};
