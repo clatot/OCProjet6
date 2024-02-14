@@ -28,6 +28,7 @@ function unselectFilter (element) {
     })
 }
 
+
 function eventListenerFilter (element) {
     element.forEach((e, index) => {
         e.addEventListener("click", function() {
@@ -60,7 +61,6 @@ const title = document.querySelector("#portfolio-title")
 const filter = document.querySelector(".filter")
 const titlemodif = document.querySelector("#portfolio-modifier")
 const headermodif = document.querySelector(".header-modif")
-
 let token = window.localStorage.getItem("token");
 
 if (!token) {
@@ -175,24 +175,30 @@ async function deleteWork(idWork) {
             Authorization: `Bearer ${userToken}`,
         },
     })
-    if (reponse.ok) {
-        for (let i = 0; i < works.length; i++) {
-            if (works[i].id == idWork) {
-                console.log("GOOD")
-                works.splice(i, 1)
-            } else {
-                console.log("RIP")
+    .then(response => {
+        if (!response.ok) {
+            throw Error(response.status);
+        }
+    })
+    .then(() => {
+        if (reponse.ok) {
+            for (let i = 0; i < works.length; i++) {
+                if (works[i].id == idWork) {
+                    works.splice(i, 1)
+                }
+            }
+            let deletedWork = document.querySelectorAll('[data-id]');
+            for (let i = 0; i < deletedWork.length; i++) {
+                if (deletedWork[i].dataset['id'] === idWork) {
+                    let parentWork = deletedWork[i].parentNode;
+                    parentWork.remove();
+                }
             }
         }
-        let deletedWork = document.querySelectorAll('[data-id]');
-        for (let i = 0; i < deletedWork.length; i++) {
-            if (deletedWork[i].dataset['id'] === idWork) {
-                let parentWork = deletedWork[i].parentNode;
-                parentWork.remove();
-            }
-        }
-    }
+    })
+    .catch(error => alert(error));
 }
+
 
 function findIndexByDataId(element) {
     return element.dataset.id === idWork;
@@ -253,18 +259,11 @@ async function addWork() {
     const file = document.getElementById("image").files[0];
     const title = document.getElementById("titre").value;
     const category = document.getElementById("categorie").value;
-    console.log(file)
-    console.log(title)
-    console.log(category)
 
     let formData = new FormData();
     formData.append("image", file);
     formData.append("title", title);
     formData.append("category", category);
-
-    for (const pair of formData.entries()) {
-        console.log(pair[0], pair[1], pair[2])
-    }
 
     const reponse = await fetch(`http://localhost:5678/api/works/`, {
         method: "POST",
@@ -275,7 +274,7 @@ async function addWork() {
     })
     .then (response => {
         if (!response.ok) {
-            alert("L'image n'a pas pu etre ajoutée.")
+            throw Error(response.status);
         }
         return response.json();
     })
@@ -288,4 +287,5 @@ async function addWork() {
 
         console.log("Image Ajoutée avec succès");
     })
+    .catch(error => alert("Erreur : " + error));
 };
