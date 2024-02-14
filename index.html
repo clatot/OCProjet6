@@ -50,6 +50,7 @@
 				<p>modifier</p>	
 			</button>
 		</div>
+		<!-- Filtres -->
 		<div class="filter none">
 			<p class="tous selected">Tous</p>
 			<p class="objets">Objets</p>
@@ -60,6 +61,7 @@
 			<!-- Récupération des travaux depuis le back-end -->
 		</div>
 		<div id="modal">
+			<!-- Modal2 Galerie -->
 			<dialog class="modal1 modal">
 				<div class="modal-box">
 					<div class="modal-button">
@@ -68,12 +70,15 @@
 					<div class="modal-contant">
 						<h2>Galerie photo</h2>
 						<hr class="bar">
-						<div class="modal-works"></div>
+						<div class="modal-works"> 
+							<!-- Récupération des travaux depuis le back-end --> 
+						</div>
 						<hr class="line">
 						<div class="modal-submit-container"><button class="modal-go-photo modal-submit">Ajouter une photo</button></div>
 					</div>
 				</div>
 			</dialog>
+			<!-- Modal2 Photo -->
 			<dialog class="modal2 modal">
 				<div  class="modal-box">
 					<div class="modal-button">
@@ -92,10 +97,12 @@
 									<span>jpg, png : 4mo max</span>
 								</label>
 							</div>
+							<!-- Choix Titre -->
 							<div class="modal-form-container">
 								<label for="titre">Titre</label>
 								<input type="text" id="titre" name="titre" maxlength="40" required>
 							</div>
+							<!-- Choix Catégorie -->
 							<div class="modal-form-container">
 							<label for="categorie">Catégorie</label>
 							<select id="categorie" name="categorie" required>
@@ -106,6 +113,7 @@
 							</select>
 							</div>
 							<hr class="line">
+							<!-- Submit -->
 							<input type="submit" value="Valider" class="modal-form-submit">
 						</form>
 					</div>
