@@ -1,32 +1,27 @@
-const form = document.querySelector("form")
+// Variable Login 
+const form = document.querySelector("form");
 
+// Mise en place page login + Appel API POST
 form.addEventListener("submit", function (event) {
-    event.preventDefault()
-    console.log("Submit!")
-
-    const mail = document.getElementById("email").value
-    const password = document.getElementById("password").value
-
+    event.preventDefault();
     const user = {
         email: document.getElementById("email").value,
         password: document.getElementById("password").value
     }
-    const chargeUtile = JSON.stringify(user)
-    console.log(chargeUtile)
+    const chargeUtile = JSON.stringify(user);
 
-    const reponse = fetch("http://localhost:5678/api/users/login", {
+    fetch("http://localhost:5678/api/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: chargeUtile
-    }).then(reponse => reponse.json())
+    }).then(response => response.json())
     .then ((response) => {
         if (!response.token) {
-            alert("Identifiant ou mot de   passe incorrect");
+            alert("Identifiant ou mot de passe incorrect");
             return;
-        }
-        const token = JSON.stringify(response.token)
-        console.log(token)
-        window.localStorage.setItem("token", token)
-        window.location = "./index.html"
+        };
+        const token = JSON.stringify(response.token);
+        window.localStorage.setItem("token", token);
+        window.location = "./index.html";
     })
 })
