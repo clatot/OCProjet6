@@ -294,6 +294,7 @@ input[type="submit"]{
 	padding-top: 8px;
 	gap: 10px;
 	background-color: transparent;
+	cursor: pointer;
 }
 
 .modal-open-button img {
