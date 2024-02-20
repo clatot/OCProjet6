@@ -1,6 +1,5 @@
 // Variable Login 
 const form = document.querySelector("form");
-const project = document.querySelector("#nav-projets") 
 
 // Mise en place page login + Appel API POST
 form.addEventListener("submit", function (event) {
@@ -26,8 +25,3 @@ form.addEventListener("submit", function (event) {
         window.location = "./index.html";
     })
 })
-
-// Revenir a la page d'accueil 
-project.addEventListener("click", function ()  {
-    window.location = "./index.html"
-});

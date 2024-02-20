@@ -1,11 +1,6 @@
 // Appel API GET works
-let responseWorks = await fetch("http://localhost:5678/api/works");
-let works = await responseWorks.json();
-
-// Appel API GET works
-let responseCategories = await fetch("http://localhost:5678/api/categories");
-let categories = await responseCategories.json();
-console.log(categories)
+let response = await fetch("http://localhost:5678/api/works");
+let works = await response.json();
 
 // Fonction Génération galerie 
 function genererWorks(works) {
@@ -23,18 +18,6 @@ function genererWorks(works) {
 
 // Mise en place Galerie 
 genererWorks(works);
-
-// Fonction Génération Filtres 
-function genererFilter() {
-    const filter = document.querySelector(".filter")
-    for (let i = 0; i < categories.length; i++) {
-        filter.innerHTML += `
-            <p>${categories[i].name}</p>
-        `
-    }
-}
-
-genererFilter();
 
 // Variables Filtres
 const boutonsFiltrer = document.querySelectorAll(".filter > p");

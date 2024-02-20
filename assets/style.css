@@ -157,10 +157,6 @@ header .none {
 	margin-bottom: 1em;
 }
 
-#projets {
-	font-weight: bold;
-}
-
 #portfolio {
 	margin: 50px 0px;
 }
@@ -536,4 +532,3 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
-
