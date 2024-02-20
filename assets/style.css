@@ -157,6 +157,10 @@ header .none {
 	margin-bottom: 1em;
 }
 
+#projets {
+	font-weight: bold;
+}
+
 #portfolio {
 	margin: 50px 0px;
 }
